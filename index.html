@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Александр — 3D Artist</title>
+    <meta name="description" content="Портфолио 3D-моделлера Александра. Blender, hard surface, окружение, персонажи." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container" aria-label="Главное меню">
+            <a href="#home" class="nav__logo">ALEX<span>3D</span></a>
+            <div class="nav__links">
+                <a href="#home">Главная</a>
+                <a href="#portfolio">Мои работы</a>
+                <a href="#contact">Связь со мной</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero container">
+            <div class="hero__content">
+                <p class="eyebrow">3D Artist • Blender • 4+ years</p>
+                <h1>Привет, я Александр. Создаю миры, персонажи и сложные формы в Blender.</h1>
+                <p class="hero__text">
+                    3D-artist с более чем 4-летним опытом. Специализируюсь на процедурных текстурах,
+                    моделировании сложной геометрии и атмосферных рендерах.
+                </p>
+
+                <div class="hero__actions">
+                    <a href="#portfolio" class="btn btn--primary">Смотреть работы</a>
+                    <a href="#contact" class="btn btn--secondary">Связаться</a>
+                </div>
+            </div>
+
+            <div class="hero__visual" aria-label="Главный рендер">
+                <div class="viewport">
+                    <div class="viewport__topbar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="viewport__scene">
+                        <div class="scene-orb"></div>
+                        <div class="scene-gear"></div>
+                        <div class="scene-panel"></div>
+                    </div>
+                    <div class="viewport__label">Viewport / Final Render / 4K</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio container">
+            <div class="section-heading">
+                <p class="eyebrow">Портфолио</p>
+                <h2>Мои работы</h2>
+            </div>
+
+            <div class="filters" aria-label="Фильтры проектов">
+                <button class="filter is-active" data-filter="all" type="button">Все</button>
+                <button class="filter" data-filter="hard-surface" type="button">Hard Surface</button>
+                <button class="filter" data-filter="environment" type="button">Окружение</button>
+                <button class="filter" data-filter="characters" type="button">Персонажи</button>
+            </div>
+
+            <div class="projects-grid">
+                <article class="project-card" data-category="hard-surface">
+                    <div class="project-card__image project-card__image--one">
+                        <div class="project-card__overlay">
+                            <span>Hard Surface</span>
+                            <h3>Небесный истребитель</h3>
+                        </div>
+                    </div>
+                    <div class="project-card__info">
+                        <p>Сложная геометрия, реактивные элементы, атмосферный рендер</p>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="environment">
+                    <div class="project-card__image project-card__image--two">
+                        <div class="project-card__overlay">
+                            <span>Окружение</span>
+                            <h3>Затерянный город</h3>
+                        </div>
+                    </div>
+                    <div class="project-card__info">
+                        <p>Процедурная архитектура, световые акценты, атмосферный ландшафт</p>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="characters">
+                    <div class="project-card__image project-card__image--three">
+                        <div class="project-card__overlay">
+                            <span>Персонажи</span>
+                            <h3>Меховой боец</h3>
+                        </div>
+                    </div>
+                    <div class="project-card__info">
+                        <p>Создание персонажа с жесткой топологией и выразительной фактурой</p>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="hard-surface">
+                    <div class="project-card__image project-card__image--four">
+                        <div class="project-card__overlay">
+                            <span>Hard Surface</span>
+                            <h3>Кибер-оружие</h3>
+                        </div>
+                    </div>
+                    <div class="project-card__info">
+                        <p>Моделирование деталей, работа с формой и глянцевыми материалами</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="contact container">
+            <div class="contact__content">
+                <p class="eyebrow">Контакты</p>
+                <h2>Давай создадим что-то крутое вместе</h2>
+                <p>
+                    Открыт для интересных проектов, заказов на 3D-моделирование и сотрудничества.
+                </p>
+                <!-- НАСТРОЙТЕ ССЫЛКИ НИЖЕ: замените значения href на свои адреса. -->
+                <div class="contact__links">
+                    <!-- Telegram: https://t.me/ваш_username -->
+                    <a href="https://t.me/collapsee_e" target="_blank" rel="noreferrer">Telegram</a>
+
+                    <!-- Discord: вставьте ссылку-приглашение на свой сервер или профиль -->
+                    <a href="https://discord.com" target="_blank" rel="noreferrer">Discord</a>
+
+                    <!-- Gmail: укажите свой адрес после mailto: -->
+                    <a href="mailto:alexander3d@example.com">Gmail</a>
+                </div>
+                <!-- КОНЕЦ БЛОКА ССЫЛОК -->
+            </div>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
