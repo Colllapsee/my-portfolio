@@ -1111,18 +1111,8 @@ button {
     position: absolute;
     z-index: 1;
     inset: auto 0 0 0;
-    padding: 26px 22px 20px;
+    padding: 22px;
     background: linear-gradient(180deg, transparent, rgba(6,11,17,0.9));
-}
-
-.project-card__overlay span {
-    display: inline-block;
-    margin-bottom: 8px;
-    color: var(--accent);
-    font-size: 0.92rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-weight: 700;
 }
 
 .project-card__overlay h3 {
