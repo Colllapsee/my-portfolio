@@ -15,7 +15,7 @@
     <meta property="og:url" content="https://colllapsee.github.io/my-portfolio/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -23,7 +23,7 @@
         <nav class="nav container" aria-label="Главное меню">
             <a href="#home" class="nav__logo">COLLAPSE <span>3D DEV</span></a>
             <div class="nav__links">
-                <a href="#home">Главная</a>
+                <a href="#home" class="active">Главная</a>
                 <a href="#portfolio">Мои работы</a>
                 <a href="#contact">Связь со мной</a>
             </div>
@@ -31,10 +31,21 @@
     </header>
 
     <main>
-        <section id="home" class="hero container">
-            <div class="hero__content">
+        <section id="home" class="hero">
+            <div class="hero__bg-layer hero__bg-layer--one"></div>
+            <div class="hero__bg-layer hero__bg-layer--two"></div>
+            <div class="hero__bg-layer hero__bg-layer--three"></div>
+            <div class="hero__bg-layer hero__bg-layer--four"></div>
+            <div class="hero__bg-layer hero__bg-layer--five"></div>
+            <div class="hero__bg-layer hero__bg-layer--six"></div>
+            <div class="hero__bg-layer hero__bg-layer--seven"></div>
+            <div class="hero__bg-layer hero__bg-layer--eight"></div>
+            <div class="hero__grid"></div>
+
+            <div class="hero__inner container">
+                <div class="hero__content reveal">
                 <p class="eyebrow">3D Artist • Blender • 4+ years</p>
-                <h1>Collapse 3D Dev — 3D-моделирование и разработка. Создаю миры и сложные формы в Blender.</h1>
+                <h1><span class="hero__title-mark">Collapse 3D Dev</span> — 3D-моделирование и разработка. Создаю миры и сложные формы в Blender.</h1>
                 <p class="hero__text">
                     3D-artist с более чем 4-летним опытом. Специализируюсь на процедурных текстурах,
                     моделировании сложной геометрии и атмосферных рендерах.
@@ -46,37 +57,61 @@
                 </div>
             </div>
 
-            <div class="hero__visual" aria-label="Главный рендер">
-                <div class="viewport">
-                    <div class="viewport__topbar">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                <div class="hero__visual reveal reveal--delay" aria-label="Главный рендер">
+                    <div class="viewport">
+                        <div class="viewport__topbar">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="viewport__meta">
+                            <span>Realtime</span>
+                            <span>Blender</span>
+                        </div>
+                        <div class="viewport__scene">
+                            <div class="scene-orb"></div>
+                            <div class="scene-gear"></div>
+                            <div class="scene-panel"></div>
+                            <span class="scene-ring scene-ring--one"></span>
+                            <span class="scene-ring scene-ring--two"></span>
+                            <span class="scene-dot scene-dot--one"></span>
+                            <span class="scene-dot scene-dot--two"></span>
+                        </div>
+                        <div class="viewport__label">Viewport / Final Render / 4K</div>
                     </div>
-                    <div class="viewport__scene">
-                        <div class="scene-orb"></div>
-                        <div class="scene-gear"></div>
-                        <div class="scene-panel"></div>
-                    </div>
-                    <div class="viewport__label">Viewport / Final Render / 4K</div>
                 </div>
             </div>
         </section>
 
-        <section id="portfolio" class="portfolio container">
-            <div class="section-heading">
+        <section id="portfolio" class="portfolio">
+            <div class="portfolio__parallax" aria-hidden="true">
+                <span class="portfolio__shape portfolio__shape--ring"></span>
+                <span class="portfolio__shape portfolio__shape--sphere"></span>
+                <span class="portfolio__shape portfolio__shape--cube"></span>
+                <span class="portfolio__shape portfolio__shape--plane"></span>
+                <span class="portfolio__shape portfolio__shape--nodes"></span>
+                <span class="portfolio__shape portfolio__shape--mesh"></span>
+                <span class="portfolio__shape portfolio__shape--plate"></span>
+                <span class="portfolio__shape portfolio__shape--particles"></span>
+                <span class="portfolio__shape portfolio__shape--arc"></span>
+                <span class="portfolio__shape portfolio__shape--spark portfolio__shape--spark-one"></span>
+                <span class="portfolio__shape portfolio__shape--spark portfolio__shape--spark-two"></span>
+                <span class="portfolio__shape portfolio__shape--spark portfolio__shape--spark-three"></span>
+            </div>
+
+            <div class="section-heading reveal">
                 <p class="eyebrow">Портфолио</p>
                 <h2>Мои работы</h2>
             </div>
 
             <div class="filters" aria-label="Фильтры проектов">
-                <button class="filter is-active" data-filter="all" type="button">Все</button>
-                <button class="filter" data-filter="rooms" type="button">Комнаты</button>
-                <button class="filter" data-filter="exteriors" type="button">Экстерьеры</button>
+                <button class="portfolio-control filter is-active" data-filter="all" type="button">Все</button>
+                <button class="portfolio-control filter" data-filter="rooms" type="button">Комнаты</button>
+                <button class="portfolio-control filter" data-filter="exteriors" type="button">Экстерьеры</button>
             </div>
 
             <div class="projects-grid">
-                <article class="project-card" data-category="rooms">
+                <article class="portfolio-item project-card" data-category="rooms">
                     <div class="project-card__image project-card__image--two">
                         <img src="./rooms/room-01.png?v=20260924" alt="Деревянная мансарда в уютном свете" loading="lazy" />
                         <div class="project-card__overlay">
@@ -89,7 +124,7 @@
                     </div>
                 </article>
 
-                <article class="project-card" data-category="rooms">
+                <article class="portfolio-item project-card" data-category="rooms">
                     <div class="project-card__image project-card__image--three">
                         <img src="./rooms/room-02.png?v=20260924" alt="Интерьер с процедурными текстурами" loading="lazy" />
                         <div class="project-card__overlay">
@@ -102,7 +137,7 @@
                     </div>
                 </article>
 
-                <article class="project-card" data-category="rooms">
+                <article class="portfolio-item project-card" data-category="rooms">
                     <div class="project-card__image project-card__image--five">
                         <img src="./rooms/room-03.png?v=20260924" alt="Детально проработанный интерьер комнаты" loading="lazy" />
                         <div class="project-card__overlay">
@@ -115,7 +150,7 @@
                     </div>
                 </article>
 
-                <article class="project-card" data-category="rooms">
+                <article class="portfolio-item project-card" data-category="rooms">
                     <div class="project-card__image project-card__image--six">
                         <img src="./rooms/room-05.png?v=20260924" alt="Уютная комната с деревом, камнем и мягким светом" loading="lazy" />
                         <div class="project-card__overlay">
@@ -128,7 +163,7 @@
                     </div>
                 </article>
 
-                <article class="project-card" data-category="exteriors">
+                <article class="portfolio-item project-card reveal" data-category="exteriors">
                     <div class="project-card__image project-card__image--four">
                         <img src="./rooms/room-04.png?v=20260924" alt="Лесная резиденция в природном ландшафте" loading="lazy" />
                         <div class="project-card__overlay">
@@ -144,8 +179,8 @@
             </div>
         </section>
 
-        <section id="contact" class="contact container">
-            <div class="contact__content">
+        <section id="contact" class="contact">
+            <div class="contact__content reveal">
                 <p class="eyebrow">Контакты</p>
                 <h2>Давай создадим что-то крутое вместе</h2>
                 <p>
