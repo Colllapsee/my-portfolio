@@ -1,0 +1,9 @@
+# Project Rules & Design Guidelines
+
+## Design & UI/UX Standards
+- Minimalist and clean aesthetic. Do not add redundant category labels on portfolio cards.
+- Keep typography consistent.
+
+## Responsive Design (Mobile-First)
+- Every single style change or layout adjustment MUST be fully adapted for mobile devices and desktops simultaneously.
+- Always check media queries and responsiveness for small screens.
