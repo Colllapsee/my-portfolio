@@ -4,6 +4,8 @@ const projectImages = document.querySelectorAll('.project-card__image img');
 const lightbox = document.querySelector('#lightbox');
 const lightboxImage = document.querySelector('.lightbox__image');
 const lightboxClose = document.querySelector('.lightbox__close');
+const lightboxPrevious = document.querySelector('.lightbox__nav--previous');
+const lightboxNext = document.querySelector('.lightbox__nav--next');
 const hero = document.querySelector('.hero');
 const portfolio = document.querySelector('.portfolio');
 const header = document.querySelector('.header');
@@ -20,6 +22,8 @@ cards.forEach((card, index) => {
 });
 
 const revealItems = document.querySelectorAll('.reveal');
+let currentImageIndex = -1;
+let lightboxSwitchTimer;
 
 if (cursorTrailContainer && !window.matchMedia('(hover: none), (pointer: coarse), (prefers-reduced-motion: reduce)').matches) {
     const trail = [];
@@ -85,21 +89,48 @@ if (cursorTrailContainer && !window.matchMedia('(hover: none), (pointer: coarse)
 }
 
 const closeLightbox = () => {
+    window.clearTimeout(lightboxSwitchTimer);
+    lightboxImage.classList.remove('is-switching');
     lightbox.hidden = true;
     document.body.classList.remove('lightbox-open');
     lightboxImage.src = '';
 };
 
-projectImages.forEach((image) => {
-    image.addEventListener('click', () => {
+const setLightboxImage = (index, animate = false) => {
+    if (!projectImages.length) {
+        return;
+    }
+
+    currentImageIndex = (index + projectImages.length) % projectImages.length;
+    const image = projectImages[currentImageIndex];
+
+    const update = () => {
         lightboxImage.src = image.currentSrc || image.src;
         lightboxImage.alt = image.alt;
+        lightboxImage.classList.remove('is-switching');
+    };
+
+    window.clearTimeout(lightboxSwitchTimer);
+
+    if (animate) {
+        lightboxImage.classList.add('is-switching');
+        lightboxSwitchTimer = window.setTimeout(update, 120);
+    } else {
+        update();
+    }
+};
+
+projectImages.forEach((image) => {
+    image.addEventListener('click', () => {
+        setLightboxImage([...projectImages].indexOf(image));
         lightbox.hidden = false;
         document.body.classList.add('lightbox-open');
     });
 });
 
 lightboxClose.addEventListener('click', closeLightbox);
+lightboxPrevious.addEventListener('click', () => setLightboxImage(currentImageIndex - 1, true));
+lightboxNext.addEventListener('click', () => setLightboxImage(currentImageIndex + 1, true));
 lightbox.addEventListener('click', (event) => {
     if (event.target === lightbox) {
         closeLightbox();
@@ -109,6 +140,16 @@ lightbox.addEventListener('click', (event) => {
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && !lightbox.hidden) {
         closeLightbox();
+    }
+
+    if (event.key === 'ArrowLeft' && !lightbox.hidden) {
+        event.preventDefault();
+        setLightboxImage(currentImageIndex - 1, true);
+    }
+
+    if (event.key === 'ArrowRight' && !lightbox.hidden) {
+        event.preventDefault();
+        setLightboxImage(currentImageIndex + 1, true);
     }
 });
 
