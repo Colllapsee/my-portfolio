@@ -918,6 +918,14 @@ button {
     margin-right: auto;
 }
 
+.portfolio > .section-heading {
+    text-align: center;
+}
+
+.portfolio > .filters {
+    justify-content: center;
+}
+
 .contact__content > .eyebrow {
     width: 100%;
     max-width: none;
