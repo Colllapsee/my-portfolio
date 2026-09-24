@@ -54,6 +54,34 @@ button {
     margin: 0 auto;
 }
 
+.cursor-trail-container {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.cursor-trail__dot {
+    position: absolute;
+    width: var(--trail-size, 7px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #E87D2A;
+    box-shadow: 0 0 10px rgba(232, 125, 42, 0.5);
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+    animation: cursorTrailFade 620ms cubic-bezier(0.2, 0.72, 0.32, 1) forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes cursorTrailFade {
+    to {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--trail-drift-x)), calc(-50% + var(--trail-drift-y))) scale(0.12);
+    }
+}
+
 .header {
     position: fixed;
     top: 0;
@@ -184,7 +212,7 @@ button {
 
 .hero__inner {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: grid;
     grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.8fr);
     align-items: center;
@@ -318,11 +346,13 @@ button {
     font-family: var(--font-display);
     font-style: normal;
     color: var(--accent);
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.16em;
     margin-bottom: 18px;
+    border-bottom: 2px solid rgba(232,112,42,0.32);
+    padding-bottom: 25px;
 }
 
 .hero h1 {
@@ -372,7 +402,7 @@ button {
     justify-content: center;
     min-height: 52px;
     padding: 0 22px;
-    font-size: 1.22rem;
+    font-size: 2rem;
     border-radius: 14px;
     border: 1px solid transparent;
     font-weight: 700;
@@ -912,7 +942,7 @@ button {
 .portfolio > .projects-grid,
 .contact > .contact__content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     width: min(1180px, calc(100% - 40px));
     margin-left: auto;
     margin-right: auto;
@@ -990,14 +1020,15 @@ button {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-bottom: 30px;
+    margin-bottom: 100px;
+    padding-bottom: 20px;
 }
 
 .portfolio-control,
 .filters [data-filter] {
     position: relative;
     padding: 10px 16px;
-    font-size: 1.1rem;
+    font-size: 2rem;
     border-radius: 999px;
     border: 1px solid var(--line);
     background: rgba(255,255,255,0.02);
@@ -1134,7 +1165,7 @@ button {
 .project-card__info {
     padding: 18px 20px 22px;
     color: var(--muted);
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     line-height: 1.35;
 }
 
@@ -1489,5 +1520,11 @@ body.lightbox-open {
     .lightbox__close {
         top: 12px;
         right: 12px;
+    }
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .cursor-trail-container {
+        display: none;
     }
 }

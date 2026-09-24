@@ -7,6 +7,7 @@ const lightboxClose = document.querySelector('.lightbox__close');
 const hero = document.querySelector('.hero');
 const portfolio = document.querySelector('.portfolio');
 const header = document.querySelector('.header');
+const cursorTrailContainer = document.querySelector('.cursor-trail-container');
 
 cards.forEach((card, index) => {
     if (!card.classList.contains('reveal')) {
@@ -19,6 +20,69 @@ cards.forEach((card, index) => {
 });
 
 const revealItems = document.querySelectorAll('.reveal');
+
+if (cursorTrailContainer && !window.matchMedia('(hover: none), (pointer: coarse), (prefers-reduced-motion: reduce)').matches) {
+    const trail = [];
+    const maxTrailLength = 55;
+    let pendingPoint = null;
+    let lastPoint = null;
+    let frameRequested = false;
+
+    const removeDot = (dot) => {
+        const index = trail.indexOf(dot);
+
+        if (index !== -1) {
+            trail.splice(index, 1);
+        }
+
+        dot.remove();
+    };
+
+    const addDot = ({ x, y }) => {
+        const dot = document.createElement('span');
+        const size = 4 + Math.random() * 5;
+
+        dot.className = 'cursor-trail__dot';
+        dot.style.left = `${x}px`;
+        dot.style.top = `${y}px`;
+        dot.style.setProperty('--trail-size', `${size.toFixed(2)}px`);
+        dot.style.setProperty('--trail-drift-x', `${((Math.random() - 0.5) * 18).toFixed(2)}px`);
+        dot.style.setProperty('--trail-drift-y', `${(-4 - Math.random() * 18).toFixed(2)}px`);
+        dot.addEventListener('animationend', () => removeDot(dot), { once: true });
+
+        cursorTrailContainer.append(dot);
+        trail.push(dot);
+
+        if (trail.length > maxTrailLength) {
+            removeDot(trail[0]);
+        }
+    };
+
+    const renderTrail = () => {
+        frameRequested = false;
+
+        if (!pendingPoint) {
+            return;
+        }
+
+        const point = pendingPoint;
+        pendingPoint = null;
+
+        if (!lastPoint || Math.hypot(point.x - lastPoint.x, point.y - lastPoint.y) >= 3) {
+            addDot(point);
+            lastPoint = point;
+        }
+    };
+
+    document.addEventListener('mousemove', (event) => {
+        pendingPoint = { x: event.clientX, y: event.clientY };
+
+        if (!frameRequested) {
+            frameRequested = true;
+            window.requestAnimationFrame(renderTrail);
+        }
+    }, { passive: true });
+}
 
 const closeLightbox = () => {
     lightbox.hidden = true;
