@@ -401,6 +401,10 @@ button {
     background: var(--bg);
 }
 
+.project-card__image--six {
+    background: var(--bg);
+}
+
 .project-card__overlay {
     position: absolute;
     z-index: 1;
